@@ -1,0 +1,32 @@
+.full-width {
+    width: 100%;
+}
+.half-width {
+    width: 50%;
+}
+.wrapper-1400 {
+    width: 1400px;
+}
+.wrapper-1000 {
+    width: 1000px;
+}
+
+.row-top-center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.row-top-left {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.col-top-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}

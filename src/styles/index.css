@@ -32,31 +32,5 @@ code {
   border: dashed 2px white;
 }
 
-.section-wrapper {
-  width: 1400px;
-}
-.title {
-  font-size: 60px;
-  font-weight: 700;
-}
-.subtitle-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-.subtitle {
-  font-size: 60px;
-  font-weight: 700;
-  width: 500px;
-}
-.subtitle-detail {
-  font-size: 20px;
-  font-weight: 500;
-  width: 500px;
-  line-height: 1.5em;
-}
 
-.purple {
-  color: #9882cb;
-}
+

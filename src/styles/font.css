@@ -1,0 +1,27 @@
+.header {
+    font-size: 60px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+.title {
+    font-size: 60px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+.title-detail {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5em;
+}
+.subtitle {
+    font-size: 40px;
+    font-weight: 700;
+    margin: 10px 0;
+    text-transform: capitalize;
+}
+.subtitle-detail {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5em;
+    margin: 0 0 40px 0;
+}

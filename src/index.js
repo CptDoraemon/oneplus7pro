@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './styles/index.css';
+import './styles/font.css';
+import './styles/flexbox.css';
+import './styles/color.css';
 
 import Display from './display/display';
 

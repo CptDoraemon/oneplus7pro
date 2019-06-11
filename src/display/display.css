@@ -10,8 +10,19 @@
 }
 .phone-container {
     height: calc(1080px + 257px); /* 1080 + 257 */
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    left: 0;
+}
+.phone-container-fixed {
+    position: fixed !important;
+}
+.phone-animation-text-container {
+    position: absolute;
+    top: 1300px;
+    left: 0;
 }
