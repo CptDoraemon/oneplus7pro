@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/oneplus7pro/static/css/main.87f66260.chunk.css",
+    "main.js": "/oneplus7pro/static/js/main.b9f56a53.chunk.js",
+    "main.js.map": "/oneplus7pro/static/js/main.b9f56a53.chunk.js.map",
+    "runtime~main.js": "/oneplus7pro/static/js/runtime~main.579ff7b4.js",
+    "runtime~main.js.map": "/oneplus7pro/static/js/runtime~main.579ff7b4.js.map",
+    "static/js/2.f87767d1.chunk.js": "/oneplus7pro/static/js/2.f87767d1.chunk.js",
+    "static/js/2.f87767d1.chunk.js.map": "/oneplus7pro/static/js/2.f87767d1.chunk.js.map",
+    "index.html": "/oneplus7pro/index.html",
+    "precache-manifest.aa8506656b936b089462e7f474ff938c.js": "/oneplus7pro/precache-manifest.aa8506656b936b089462e7f474ff938c.js",
+    "service-worker.js": "/oneplus7pro/service-worker.js",
+    "static/css/main.87f66260.chunk.css.map": "/oneplus7pro/static/css/main.87f66260.chunk.css.map"
+  }
+}
