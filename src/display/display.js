@@ -4,6 +4,22 @@ import './display.css';
 import phoneReflection from '../assets/phone-reflection.jpg';
 
 import data from '../data';
+import {withFlyInAnimation} from "../animations/fade-in";
+
+const Subtitle = (props) => <div className='subtitle three-quarter-width'> { props.content } </div>;
+const SubtitleDetail = (props) => <div className='subtitle-detail three-quarter-width'> { props.content } </div>;
+const WithFlyInAnimationSubtitle = withFlyInAnimation(Subtitle);
+const WithFlyInAnimationSubtitleDetail = withFlyInAnimation(SubtitleDetail);
+
+const subtitle0to2 = data.display.subtitles.slice(0, 3);
+const subtitle0to2Components = subtitle0to2.map((i, index) => {
+    return (
+        <div key={index}>
+            <WithFlyInAnimationSubtitle offsetY={200} content={i.subtitle}/>
+            <WithFlyInAnimationSubtitleDetail offsetY={200} content={i.detail}/>
+        </div>
+    )
+});
 
 class Phone extends React.Component {
     constructor(props) {
@@ -50,7 +66,7 @@ class Phone extends React.Component {
             this.phonePositionCSS = {top: - 0.9 * 1080 + window.innerHeight };
             this.setState({isPhoneFixed: 'caught'})
         } else if (isAfterFixedRange && this.state.isPhoneFixed !== 'released') {
-            this.phonePositionCSS = {top: 2000 - (1080 + 257) + (1080 + 257) * 0.4 * 0.7};
+            this.phonePositionCSS = {bottom: - (1080 * 0.1 + 257)};
             this.setState({isPhoneFixed: 'released'})
         }
         // zoom
@@ -147,18 +163,7 @@ class Phone extends React.Component {
                     <div className='half-width'>
                     </div>
                     <div className='half-width'>
-                        <div>
-                            <div className='subtitle'> { data.display.subtitles[0].subtitle } </div>
-                            <div className='subtitle-detail'> { data.display.subtitles[0].detail} </div>
-                        </div>
-                        <div>
-                            <div className='subtitle'> { data.display.subtitles[1].subtitle } </div>
-                            <div className='subtitle-detail'> { data.display.subtitles[1].detail} </div>
-                        </div>
-                        <div>
-                            <div className='subtitle'> { data.display.subtitles[2].subtitle } </div>
-                            <div className='subtitle-detail'> { data.display.subtitles[2].detail} </div>
-                        </div>
+                        { subtitle0to2Components }
                     </div>
                 </div>
             </div>
@@ -166,6 +171,120 @@ class Phone extends React.Component {
     }
 }
 
+class PlayButton extends React.Component{
+    constructor(props) {
+        super(props);
+        this.size = this.props.size;
+        this.arrowSize = this.size * 0.2;
+        this.enlargeFactor = 1.2;
+        this.circle = {
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 2,
+            cursor: 'pointer',
+            transition: '0.3s'
+        };
+        this.circleInactive = {
+            width: `${this.size}px`,
+            height: `${this.size}px`,
+            borderRadius: `${0.5 * this.size}px`,
+            backgroundColor: 'white',
+        };
+        this.circleActive = {
+            width: `${this.enlargeFactor * this.size}px`,
+            height: `${this.enlargeFactor * this.size}px`,
+            borderRadius: `${0.5 * this.enlargeFactor * this.size}px`,
+            backgroundColor: '#eb0028'
+        };
+        this.arrow = {
+            width: 0,
+            height: 0,
+            transform: `translateX(${0.2*this.arrowSize}px)`,
+            transition: '0.3s'
+        };
+        this.arrowInactive = {
+            borderTop: `${this.arrowSize*0.7}px solid transparent`,
+            borderBottom: `${this.arrowSize*0.7}px solid transparent`,
+            borderLeft: `${this.arrowSize}px solid black`,
+        };
+        this.arrowActive = {
+            borderTop: `${this.arrowSize*0.7*this.enlargeFactor}px solid transparent`,
+            borderBottom: `${this.arrowSize*0.7*this.enlargeFactor}px solid transparent`,
+            borderLeft: `${this.arrowSize*this.enlargeFactor}px solid white`,
+        };
+    }
+    render() {
+        return (
+            <div style={this.props.isActive ? {...this.circle, ...this.circleActive} : {...this.circle, ...this.circleInactive}} onClick={this.props.clickHandler}>
+                <div style={this.props.isActive ? {...this.arrow, ...this.arrowActive} : {...this.arrow, ...this.arrowInactive}}> </div>
+            </div>
+        )
+    }
+}
+class Refreshrate extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isHovering: false,
+            isVideoActivated: false
+        };
+        this.handleMouseEnter = this.handleMouseEnter.bind(this);
+        this.handleMouseLeave = this.handleMouseLeave.bind(this);
+        this.activateVideo = this.activateVideo.bind(this);
+    }
+    handleMouseEnter() {
+        this.setState((prevState) => {
+            return !prevState.isHovering ? { isHovering: true } : null
+        })
+    }
+    handleMouseLeave() {
+        this.setState((prevState) => {
+            return prevState.isHovering ? { isHovering: false } : null
+        })
+    }
+    activateVideo() {
+        this.setState((prevState) => {
+            return !prevState.isVideoActivated ? { isVideoActivated: true } : null
+        })
+    }
+    render() {
+        return (
+            <div className='wrapper-1000 row-top-left'>
+                <div className='half-width'>
+                    <WithFlyInAnimationSubtitle offsetY={200} content={data.display.subtitles[3].subtitle}/>
+                    <WithFlyInAnimationSubtitleDetail offsetY={200} content={data.display.subtitles[3].detail}/>
+                </div>
+                <div className='half-width display-refreshrate-wrapper'>
+                    <div className='three-quarter-width display-video-container'  onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+                        {
+                            this.state.isVideoActivated
+
+                                ?
+                                <React.Fragment>
+                                <video playsInline={true} webkit-playsinline='true' preload="none" muted="muted" autoPlay={true}>
+                                    <source src="https://xiaoxihome.s3.us-east-2.amazonaws.com/oneplus7pro/refreshrate/fps.mp4" type="video/mp4" />
+                                </video>
+                                <div className='display-video-legends row-center-center'>
+                                    <div className='half-width subtitle-detail'>OnePlus 7 Pro</div>
+                                    <div className='half-width subtitle-detail'>Others</div>
+                                </div>
+                                </React.Fragment>
+
+                                :
+
+                                <div className='display-video-container-cover col-center-center'>
+                                    <PlayButton size={70} isActive={this.state.isHovering} clickHandler={this.activateVideo}/>
+                                    <p className='subtitle-detail'>The difference 90 Hz makes</p>
+                                </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
 
 class Display extends React.Component {
     render() {
@@ -180,6 +299,8 @@ class Display extends React.Component {
                 </div>
 
                 <Phone />
+
+                <Refreshrate />
             </div>
         )
     }

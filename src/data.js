@@ -18,6 +18,10 @@ const data = {
                 subtitle: 'Screen Unlock',
                 detail: 'Upgraded Screen Unlock technology ensures you can reliably unlock your OnePlus 7 Pro in just 0.21 seconds.'
             },
+            {
+                subtitle: '90 Hz Refresh Rate.',
+                detail: 'Every tap, swipe and button press feels instant and effortless thanks to the world’s first AMOLED display with a 90 Hz refresh rate.'
+            }
         ]
     }
 };
