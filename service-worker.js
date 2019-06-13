@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/oneplus7pro/precache-manifest.aa8506656b936b089462e7f474ff938c.js"
+  "/oneplus7pro/precache-manifest.60e5341a3617764d738b07bd18eff8fb.js"
 );
 
 self.addEventListener('message', (event) => {
